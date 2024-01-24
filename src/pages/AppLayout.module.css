@@ -1,0 +1,10 @@
+.app {
+  height: 100vh;
+  overscroll-behavior-y: none;
+  display: flex;
+  position: relative;
+}
+
+.datePickerWrapper {
+  width: 100%;
+}
