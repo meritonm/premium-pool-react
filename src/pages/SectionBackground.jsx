@@ -39,10 +39,10 @@ const PhotoImage = styled.img`
 const StyledText = styled.div`
   position: absolute;
 
-  top: 55%;
+  top: 45%;
   left: 40%;
   color: #ececec;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -35%);
   font-weight: 700;
   line-height: 1.2;
 
@@ -50,95 +50,96 @@ const StyledText = styled.div`
     top: 50%;
   }
   @media (max-width: 641px) {
-    top: 47%;
+    top: 45%;
   }
 `;
 
 const StyledH1 = styled.h1`
-  font-size: 7.4rem;
+  font-size: 6.8rem;
 
   display: inline-block;
   margin-right: -50%;
   transform: translateX(0%);
 
   @media (max-width: 1344px) {
-    font-size: 6.4rem;
+    font-size: 6.2rem;
   }
 
   @media (max-width: 1200px) {
-    font-size: 5.8rem;
-  }
-
-  @media (max-width: 940px) {
     font-size: 5rem;
   }
 
-  @media (max-width: 809px) {
+  @media (max-width: 940px) {
     font-size: 4.2rem;
   }
 
-  @media (max-width: 721px) {
+  @media (max-width: 809px) {
     font-size: 3.8rem;
+  }
+
+  @media (max-width: 721px) {
+    font-size: 3.4rem;
     line-height: 1.6;
   }
 
   @media (max-width: 641px) {
-    font-size: 3.4rem;
+    font-size: 2.8rem;
   }
 
   @media (max-width: 507px) {
-    font-size: 3rem;
+    font-size: 2.4rem;
   }
 
   @media (max-width: 485px) {
-    font-size: 2.8rem;
+    font-size: 2.2rem;
   }
   @media (max-width: 425px) {
-    font-size: 2.6rem;
+    font-size: 2rem;
   }
 
   @media (max-width: 390px) {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
   }
 `;
 
 const StyledH3 = styled.h1`
   display: inline-block;
+  margin-right: -50%;
+
   padding-bottom: 5.2rem;
-  font-size: 5.4rem;
+  font-size: 4.8rem;
+  font-weight: 500;
   @media (max-width: 1344px) {
     font-size: 5rem;
   }
 
   @media (max-width: 1200px) {
-    font-size: 4.4rem;
+    font-size: 3.8rem;
   }
 
   @media (max-width: 940px) {
-    font-size: 3.6rem;
-  }
-
-  @media (max-width: 809px) {
-    font-size: 3.2rem;
-  }
-
-  @media (max-width: 721px) {
     font-size: 3rem;
   }
 
-  @media (max-width: 641px) {
-    font-size: 2.4rem;
+  @media (max-width: 809px) {
+    font-size: 2.6rem;
   }
 
-  @media (max-width: 507px) {
+  @media (max-width: 721px) {
     font-size: 2.2rem;
   }
 
-  @media (max-width: 485px) {
+  @media (max-width: 641px) {
     font-size: 2rem;
   }
-  @media (max-width: 425px) {
+
+  @media (max-width: 507px) {
     font-size: 1.8rem;
+    padding-bottom: 8.2rem;
+  }
+
+  @media (max-width: 485px) {
+    font-size: 1.6rem;
   }
 `;
 
@@ -147,39 +148,41 @@ const StyledParagraph = styled.p`
   margin-right: -20%;
 
   font-weight: 500;
-  font-size: 3.4rem;
+  font-size: 3.2rem;
   padding-bottom: 7.4rem;
   @media (max-width: 1200px) {
-    font-size: 3rem;
+    font-size: 2.4rem;
     letter-spacing: 1px;
   }
   @media (max-width: 1105px) {
-    font-size: 2.6rem;
+    font-size: 2.2rem;
   }
   @media (max-width: 900px) {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     line-height: 1.5;
     padding-bottom: 4.2rem;
   }
   @media (max-width: 597px) {
-    font-size: 2rem;
-  }
-  @media (max-width: 485px) {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
-  @media (max-width: 425px) {
-    font-size: 1.6rem;
+  @media (max-width: 485px) {
+    font-size: 1.4rem;
   }
 `;
 
 /////////////////////////////////
 // Button
 const StyledButtonContainer = styled.div`
+  /* display: inline-block; */
+
   display: flex;
+
   gap: 7rem;
+
   @media (max-width: 809px) {
     padding-top: 1.6rem;
+    gap: 6rem;
   }
   @media (max-width: 721px) {
     gap: 2.4rem;
@@ -188,6 +191,8 @@ const StyledButtonContainer = styled.div`
   @media (max-width: 485px) {
     gap: 1.4rem;
     padding-top: 5rem;
+    /* display: inline-block; */
+    margin-right: -40%;
   }
 
   @media (max-width: 425px) {
@@ -233,17 +238,29 @@ const StyledButton = styled.button`
     padding: 1.2rem 2.4rem;
   }
   @media (max-width: 597px) {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     padding: 1rem 2rem;
   }
   @media (max-width: 485px) {
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
+    /* padding: 0.8rem 1.8rem; */
+    /* width: 16rem; */
+    /* text-align: center; */
+    justify-content: center;
   }
   @media (max-width: 425px) {
-    font-size: 1.1rem;
+    /* font-size: 1.1rem; */
   }
   @media (max-width: 390px) {
-    font-size: 1rem;
+    /* font-size: 1rem; */
+    /* padding: 0.6rem 1.6rem; */
+    font-size: 1.2rem;
+    padding: 0.8rem 1.6rem;
+  }
+
+  @media (max-width: 295px) {
+    font-size: 1.1rem;
+    padding: 0.6rem 1.4rem;
   }
 
   &:last-child {
@@ -299,8 +316,8 @@ function SectionBackground() {
           loading="lazy"
         />
         <StyledText>
-          <StyledH1>YOUR POOL, OUR PASSION</StyledH1>
-          <StyledH3>Mastering the Art of Pool</StyledH3>
+          <StyledH1>IHR POOL, UNSERE LEIDENSCHAFT</StyledH1>
+          <StyledH3>Wir beherrschen die kunst des Pools</StyledH3>
           <StyledParagraph>
             Tauchen Sie ein in eine Welt, in der Innovation auf Entspannung
             trifft und Ihr Traumpool Wirklichkeit wird
@@ -312,7 +329,7 @@ function SectionBackground() {
                 navigate("/kontakt");
               }}
             >
-              Büchen termin
+              Termin Buchen
             </StyledButton>
             <StyledButton
               onClick={(e) => {
@@ -320,7 +337,7 @@ function SectionBackground() {
                 navigate("/service");
               }}
             >
-              Lern Mehr
+              LERNE MEHR
             </StyledButton>
           </StyledButtonContainer>
         </StyledText>

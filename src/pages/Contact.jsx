@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import PageNav from "../components/PageNav";
 import { useState } from "react";
+import { MultiSelect } from "primereact/multiselect";
 
 import videoForm from "../img/video1.mp4";
-import Footer from "./Footer";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import de from "date-fns/locale/de";
 import styles from "./AppLayout.module.css";
+
+import "./Multiselect.css";
+import Footer from "./Footer";
 
 registerLocale("de", de);
 
@@ -49,7 +52,7 @@ const StyledSection = styled.section`
 const StyledContainerForm = styled.section`
   display: grid;
   max-width: 126rem;
-  max-height: 72rem;
+  max-height: 78rem;
   border-radius: 12px;
   grid-template-columns: 1.5fr 1fr;
   box-shadow: 0 2.4rem 4.8rem rgb(113, 168, 169);
@@ -57,7 +60,7 @@ const StyledContainerForm = styled.section`
   overflow: hidden;
 
   @media (max-width: 1126px) {
-    max-height: 74rem;
+    max-height: 76rem;
   }
 
   @media (max-width: 700px) {
@@ -99,7 +102,7 @@ const StyledFormContent = styled.div`
       font-size: 1.2rem;
     }
 
-    @media (max-width: 450px) {
+    @media (max-width: 455px) {
       display: none;
     }
   }
@@ -129,7 +132,7 @@ const StyledFormContent = styled.div`
   }
 
   @media (max-width: 1126px) {
-    padding: 3.2rem 4.2rem 4.2rem 4.2rem;
+    padding: 2.2rem 2.2rem 2.2rem 2.2rem;
 
     & input {
       font-size: 1.3rem;
@@ -137,6 +140,10 @@ const StyledFormContent = styled.div`
         font-size: 1.2rem;
       }
     }
+  }
+
+  @media (max-width: 678) {
+    /* padding: 2.2rem 2.2rem 2.2rem 2.2rem; */
   }
 `;
 
@@ -173,27 +180,99 @@ const StyledP = styled.p`
   }
 `;
 
-const StyledSelect = styled.select`
-  font-size: 1.8rem;
-  font-family: inherit;
-  color: inherit;
-  border: none;
-  background-color: #fdf2e9;
-  border-radius: 50px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+const StyledPP = styled.p`
+  font-size: 1.4rem;
+  padding-bottom: 10.2rem;
+  padding-top: 3.2rem;
+  line-height: 1.4;
 
-  & option {
-    font-size: 1.6rem;
+  @media (max-width: 944px) {
+    font-size: 1.2rem;
   }
+`;
+
+const StyledFormH33 = styled.h3`
+  color: #000000;
+  font-weight: bold;
+  padding-top: 3.6rem;
+  font-size: 3.4rem;
+  line-height: 1.4;
 
   @media (max-width: 1126px) {
-    font-size: 1rem;
+    padding-bottom: 1.8rem;
+    line-height: 1.1;
+    font-size: 3rem;
+  }
 
-    & option {
+  @media (max-width: 944px) {
+    padding-bottom: 1.4rem;
+    font-size: 2.4rem;
+  }
+
+  @media (max-width: 520px) {
+    font-size: 2.2rem;
+  }
+`;
+
+const StyledMultiSelect = styled(MultiSelect)`
+  font-size: 1.4rem;
+  border-radius: 20px;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  background-color: #fdf2e9;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+
+  .p-multiselect-panel {
+    .p-multiselect-items {
+      .p-multiselect-item {
+        &:hover {
+          background-color: #fdf2e9;
+        }
+      }
+    }
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 8px rgba(253, 242, 233, 0.562);
+    background-color: #fdf2e9;
+  }
+  & input {
+    font-size: 1.4rem;
+    border-radius: 20px;
+    @media (max-width: 944px) {
       font-size: 1.2rem;
     }
   }
+
+  @media (max-width: 944px) {
+    font-size: 1.2rem;
+  }
 `;
+
+// const StyledSelect = styled.select`
+//   font-size: 1.8rem;
+//   font-family: inherit;
+//   color: inherit;
+//   border: none;
+//   background-color: #fdf2e9;
+//   border-radius: 50px;
+//   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+//   /* appearance: none; */
+
+//   & option {
+//     font-size: 1.6rem;
+//   }
+
+//   @media (max-width: 1126px) {
+//     font-size: 1rem;
+
+//     & option {
+//       font-size: 1.2rem;
+//     }
+//   }
+// `;
 
 const StyledVideo = styled.video`
   display: flex;
@@ -243,27 +322,104 @@ const StyledButton = styled.button`
 
 function Contact() {
   const [setIsVideoPlaying] = useState(false);
+
   const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [zipCode, setZipCode] = useState("");
+  const [city, setCity] = useState("");
   const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
+  const [TelNumber, setTelNumber] = useState();
   const [street, setStreet] = useState("");
-  const [zipcode, setZipCode] = useState("");
-  const [date, setDate] = useState(new Date());
-  const [selectedService, setSelectedService] = useState();
+
+  const [date, setDate] = useState(null);
+
+  const [selectedServices, setSelectedServices] = useState([]);
+  const [selectedServicesError, setSelectedServicesError] = useState("");
+
   const [comments, setComments] = useState("");
+
+  const [telNumberError, setTelNumberError] = useState("");
+  const [dateError, setDateError] = useState("");
 
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
+  ////////////////////////////////////////////
+  // PER MA VON
+  // const [selectedDate, setSelectedDate] = useState(null);
+  // const [disabledDates, setDisabledDates] = useState([]);
+  // useEffect(() => {
+  //   fetchDisabledDates();
+  // }, []);
+
+  // const fetchDisabledDates = async () => {
+  //   try {
+  //     // Make an HTTP
+  //     const response = await fetch("SERVER");
+  //     const data = await response.json();
+
+  //     // Update
+  //     setDisabledDates(data.disabledDates);
+  //   } catch (error) {
+  //     console.error("Error fetching disabled dates:", error);
+  //   }
+  // };
+  ////////////////////////////////////////////
+
   const data = [
     name,
+    surname,
+    zipCode,
+    city,
     email,
-    address,
+    TelNumber,
     street,
-    zipcode,
     date,
-    selectedService,
+    selectedServices,
     comments,
   ];
+
+  const serviceOptions = [
+    { name: "Wartung und Pflege", value: "Wartung und Pflege" },
+    { name: "Service", value: "Service" },
+    { name: "Abdeckungen", value: "Abdeckungen" },
+    { name: "Inbetriebnahme", value: "Inbetriebnahme" },
+    { name: "Neubau und Umbau", value: "Neubau und Umbau" },
+    { name: "Mehr...", value: "Mehr..." },
+  ];
+
+  const handleMultiSelectChange = (e) => {
+    setSelectedServices(e.value);
+    setSelectedServicesError("");
+  };
+
+  const handleDateChange = (date) => {
+    // AFTER FIXED
+    // setSelectedDate(date);
+
+    if (date instanceof Date && !isNaN(date)) {
+      setDate(date);
+      setDateError("");
+    } else {
+      setDateError("Please enter a valid date");
+    }
+  };
+
+  //////////////////////////////////////
+  // PER MA VON
+  // const isDateDisabled = (date) => {
+  // return disabledDates.includes(date.toISOString().split("T")[0]);
+  // };
+
+  const handleTelNumberChange = (e) => {
+    const inputValue = e.target.value;
+    // if (!/^\d*$/.test(inputValue)) {
+    if (!/^\+?\d*$/.test(inputValue)) {
+      setTelNumberError("Please enter a valid numbers");
+    } else {
+      setTelNumber(inputValue);
+      setTelNumberError("");
+    }
+  };
 
   const handleVideoClick = () => {
     setIsVideoPlaying((prevState) => !prevState);
@@ -271,14 +427,21 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (selectedServices.length === 0) {
+      setSelectedServicesError("Please select at least one option.");
+      return;
+    }
     if (
       !name ||
+      !surname ||
+      !zipCode ||
+      !city ||
       !email ||
-      !address ||
       !street ||
-      !zipcode ||
+      !TelNumber ||
       !date ||
-      !selectedService
+      !selectedServices
     ) {
       alert("Please fill in all required fields.");
       return;
@@ -287,12 +450,14 @@ function Contact() {
     console.log("Form submitted:", data);
 
     setName("");
-    setEmail("");
-    setAddress("");
-    setStreet("");
+    setSurname("");
     setZipCode("");
+    setCity("");
+    setEmail("");
+    setTelNumber("");
+    setStreet("");
     setDate("");
-    setSelectedService("");
+    setSelectedServices("");
     setComments("");
 
     setIsFormSubmitted(true);
@@ -306,11 +471,11 @@ function Contact() {
           <StyledFormContent>
             {isFormSubmitted ? (
               <>
-                <StyledFormH3>Vielen Dank für Ihre Nachricht!</StyledFormH3>
-                <StyledP>
+                <StyledFormH33>Vielen Dank für Ihre Nachricht!</StyledFormH33>
+                <StyledPP>
                   Wir haben Ihre Anfrage erhalten und werden uns in Kürze bei
                   Ihnen melden.
-                </StyledP>
+                </StyledPP>
               </>
             ) : (
               <>
@@ -319,24 +484,56 @@ function Contact() {
                   Tauchen Sie mit uns in eine Saison erfrischender und
                   problemloser Poolpflege ein. Kristallklares Wasser erwartet
                   Sie, denn wir bringen Fachwissen direkt an Ihren Pool.
-                  Beginnen Sie noch heute mit der Gewissheit, dass Sie jederzeit
-                  die Flexibilität haben, sich anzupassen oder eine Pause
-                  einzulegen. Und rate was? Ihr erster Poolservice geht aufs
-                  Haus!
                 </StyledP>
 
                 <form className="cta-form" onSubmit={handleSubmit}>
                   <div>
-                    <label htmlFor="fullName">Name und Vorname</label>
+                    <label htmlFor="Vorname">Vorname</label>
                     <input
                       type="text"
-                      id="fullName"
-                      placeholder="Name und Vorname"
+                      id="name"
+                      placeholder="Vorname"
                       onChange={(e) => setName(e.target.value)}
                       value={name}
                       required
                     />
                   </div>
+                  <div>
+                    <label htmlFor="name">Name</label>
+                    <input
+                      type="text"
+                      id="Surname"
+                      placeholder="Name"
+                      onChange={(e) => setSurname(e.target.value)}
+                      value={surname}
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="zipcode">Postleitzahl</label>
+                    <input
+                      type="text"
+                      id="zipcode"
+                      onChange={(e) => setZipCode(e.target.value)}
+                      value={zipCode}
+                      placeholder="Postleitzahl"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="city">Wohnhort</label>
+                    <input
+                      type="text"
+                      id="city"
+                      onChange={(e) => setCity(e.target.value)}
+                      value={city}
+                      placeholder="Wohnort"
+                      required
+                    />
+                  </div>
+
                   <div>
                     <label htmlFor="email">E-Mail</label>
                     <input
@@ -348,52 +545,65 @@ function Contact() {
                       required
                     />
                   </div>
+
                   <div>
-                    <label htmlFor="city">Wohnhort</label>
+                    <label htmlFor="telephone">Telefonnummer</label>
                     <input
-                      type="text"
-                      id="city"
-                      onChange={(e) => setAddress(e.target.value)}
-                      value={address}
-                      placeholder="Wohnort"
+                      type="tel"
+                      id="telephone"
+                      onChange={handleTelNumberChange}
+                      value={TelNumber}
+                      placeholder="Telefonnummer"
                       required
                     />
+                    {telNumberError && (
+                      <span style={{ color: "red" }}>{telNumberError}</span>
+                    )}
                   </div>
+
                   <div>
-                    <label htmlFor="street">Straße und Hausnummer</label>
+                    <label htmlFor="street">Strasse und Hausnummer</label>
                     <input
                       type="text"
                       id="street"
                       onChange={(e) => setStreet(e.target.value)}
                       value={street}
-                      placeholder="Straße und Hausnummer"
+                      placeholder="Strasse und Hausnummer"
                       required
                     />
                   </div>
-                  <div>
-                    <label htmlFor="zipcode">Postleitzahl</label>
-                    <input
-                      type="text"
-                      id="zipcode"
-                      onChange={(e) => setZipCode(e.target.value)}
-                      value={zipcode}
-                      placeholder="Postleitzahl"
-                      required
-                    />
-                  </div>
+
                   <div>
                     <label htmlFor="date">Wunschtermin</label>
                     <DatePicker
-                      // showIcon
+                      id="date"
+                      locale="de"
+                      selected={date}
+                      onChange={handleDateChange}
+                      wrapperClassName={styles.datePickerWrapper}
+                      dateFormat="dd.MM.yyyy"
+                      placeholderText="Tag auswählen"
+                      required
+                    />
+                    {dateError && (
+                      <span style={{ color: "red" }}>{dateError}</span>
+                    )}
+                  </div>
+
+                  {/* <div>
+                    <label htmlFor="date">Wunschtermin</label>
+                    <DatePicker
                       id="date"
                       locale="de"
                       selected={date}
                       onChange={(date) => setDate(date)}
                       wrapperClassName={styles.datePickerWrapper}
+                      dateFormat="dd.MM.yyyy"
+                      placeholder="TT.MM.JJJJ"
                       required
                     />
-                  </div>
-                  <div>
+                  </div> */}
+                  {/* <div>
                     <label htmlFor="serviceOption">Service Optionen</label>
                     <StyledSelect
                       id="serviceOption"
@@ -402,15 +612,73 @@ function Contact() {
                       required
                     >
                       <option value="">Wähle eine Option</option>
-                      <option value="cleanPool">Poolreinigung</option>
-                      <option value="restartPool">Abdeckung reinigen</option>
-                      <option value="checkAdditive">IBN</option>
-                      <option value="changeEngine">
-                        Service Atumatikdosieranlage
-                      </option>
-                      <option value="Umbau">Umbau</option>
+                      <option value="text">Wartung und Pflege</option>
+                      <option value="text">Service</option>
+                      <option value="text">Abdeckungen</option>
+                      <option value="text">Inbetriebnahme</option>
+                      <option value="text">Neubau und Umbau</option>
+                      <option value="text">Mehr...</option>
                     </StyledSelect>
+                  </div> */}
+                  {/* <div>
+                    <label htmlFor="selectedServices">Service Optionen</label>
+                    <StyledMultiSelect
+                      id="selectedServices"
+                      value={selectedServices}
+                      onChange={(e) => setSelectedServices(e.value)}
+                      options={serviceOptions}
+                      optionLabel="name"
+                      placeholder="Wähle eine oder mehrere Optionen"
+                      required
+                    />
+                  </div> */}
+                  {/* <div className="card flex justify-content-center">
+                    <MultiSelect
+                      value={selectedServices}
+                      onChange={handleMultiSelectChange}
+                      options={serviceOptions}
+                      optionLabel="name"
+                      display="chip"
+                      placeholder="Wähle eine oder mehrere"
+                      maxSelectedLabels={1}
+                      className="w-full md:w-20rem"
+                    />
+                  </div> */}
+                  {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
+                  {/* QEKJO PJESA */}
+                  <div>
+                    <label htmlFor="select">Optionen</label>
+                    <StyledMultiSelect
+                      id="select"
+                      value={selectedServices}
+                      onChange={handleMultiSelectChange}
+                      options={serviceOptions}
+                      optionLabel="name"
+                      placeholder="Wähle eine oder mehrere"
+                      maxSelectedLabels={1}
+                      itemTemplate={(option) => (
+                        <div
+                          style={{
+                            width: "100%",
+                            whiteSpace: "nowrap",
+                            backgroundColor: "#333",
+                            // overflow: "hidden",
+                            textOverflow: "ellipsis",
+                          }}
+                        >
+                          {option.name}
+                        </div>
+                      )}
+                    />
+                    {/* /////////////////////////////////////////////////////////////////////////////////// */}
+                    {/* Display error message if no option is selected */}
+                    {selectedServicesError && (
+                      <span style={{ color: "red" }}>
+                        {selectedServicesError}
+                      </span>
+                    )}
                   </div>
+
                   <div>
                     <label htmlFor="comments">Kommentare</label>
                     <input

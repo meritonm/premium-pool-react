@@ -1,6 +1,7 @@
-import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import PremiumPoolLogo from "../img/PremiumPoolLogo.png";
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 const StyledFooter = styled.footer`
   padding-top: 9.2rem;
@@ -8,7 +9,8 @@ const StyledFooter = styled.footer`
   padding-left: 12.2rem;
   padding-right: 12.2rem;
   border-top: 1px solid #add6d4;
-  /* color: #2fb1ab; */
+
+  /* background-color: #a8def0; */
 
   @media (max-width: 1200px) {
     padding-left: 9.2rem;
@@ -30,7 +32,6 @@ const StyledFooter = styled.footer`
   }
 
   @media (max-width: 624px) {
-    padding-bottom: 4.2rem;
     padding-left: 3.2rem;
     padding-right: 3.2rem;
   }
@@ -38,8 +39,10 @@ const StyledFooter = styled.footer`
 
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  gap: 10rem;
+  justify-content: center;
+
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 18rem;
 
   @media (max-width: 1200px) {
     gap: 8rem;
@@ -48,76 +51,61 @@ const StyledGrid = styled.div`
   @media (max-width: 944px) {
     gap: 6rem;
   }
-  @media (max-width: 820px) {
-    grid-template-columns: 1.5fr 1fr;
-    row-gap: 10rem;
+
+  @media (max-width: 600px) {
+    gap: 4rem;
   }
 
-  @media (max-width: 704px) {
-    row-gap: 12rem;
+  @media (max-width: 465px) {
+    grid-template-columns: 1fr 1fr;
   }
 
-  @media (max-width: 370px) {
-    grid-template-columns: 1.5fr;
+  @media (max-width: 375px) {
+    grid-template-columns: 1fr;
   }
 `;
 
-const StyledLogoCol = styled.div`
+const StyledDiv = styled.div`
+  list-style: none;
   display: flex;
+  justify-content: center;
   flex-direction: column;
+  /* grid-column: 1 / 2;
+  grid-row: span 2; */
 
-  @media (max-width: 820px) {
-  }
+  row-gap: 2rem;
 `;
 
 const StyledFooterLogo = styled.a`
   display: block;
-  margin-bottom: 3.2rem;
-  width: 2rem;
-  height: 2rem;
+  align-self: flex-start;
+  /* margin-right: auto; */
+  /* margin-top: -2.2rem; */
+  /* margin-left: -4.8rem; */
+  margin-bottom: -2.2rem;
 `;
 
-const StyledSocialLink = styled.ul`
-  list-style: none;
+const StyledFooterLogoImg = styled.img`
+  width: 18rem;
+  height: 18rem;
+
+  @media (max-width: 824px) {
+    width: 14rem;
+    height: 14rem;
+  }
+
+  @media (max-width: 650px) {
+    width: 12rem;
+    height: 12rem;
+  }
+`;
+
+const StyledDivIcon = styled.div`
   display: flex;
   gap: 2.4rem;
 `;
 
-const StyledCopyright = styled.p`
-  font-size: 1.4rem;
-  line-height: 1.6;
-  color: #767676;
-  margin-top: auto;
-`;
-
-const StyledAddressCol = styled.div``;
-
-const StyledFooterHeading = styled.p`
-  font-size: 1.6rem;
-  font-weight: 500;
-  margin-bottom: 4rem;
-`;
-
-const StyledContacts = styled.address`
-  font-style: normal;
-  font-size: 1.4rem;
-  line-height: 1.6;
-`;
-
-const StyledAddress = styled.p`
-  margin-bottom: 2.4rem;
-`;
-
-const StyledNavCol = styled.nav``;
-
-const StyledFooterNav = styled.ul`
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 2.4rem;
-`;
-
-const StyledFooterLink = styled(NavLink)`
+const StyledFooterIcon = styled.a`
   text-decoration: none;
   font-size: 1.4rem;
   color: #606060;
@@ -129,45 +117,68 @@ const StyledFooterLink = styled(NavLink)`
   }
 `;
 
-const StyledFooterA = styled.a`
-  text-decoration: none;
-  font-size: 1.4rem;
-  color: #606060;
+const StyledSpanIcon = styled.span`
   transition: all 0.3s;
-
-  &:hover,
-  &:active {
-    color: #2fb1ab;
-  }
-`;
-
-const StyledPremiumP = styled.p`
-  font-weight: bold;
-  color: #444444;
-`;
-
-const StyledSocialIcon = styled(StyledFooterLogo)`
-  height: 3.5rem;
-  width: 3.5rem;
 
   color: #242424;
 
   @media (max-width: 900px) {
-    height: 3rem;
-    width: 3rem;
+    /* height: 3rem;
+    width: 3rem; */
   }
 
   & svg {
-    height: 100%;
-    width: 100%;
+    height: 3.2rem;
+    width: 3.2rem;
+
+    @media (max-width: 650px) {
+      height: 2.4rem;
+      width: 2.4rem;
+    }
+
+    @media (max-width: 450px) {
+      height: 2.2rem;
+      width: 2.2rem;
+    }
   }
 
+  &:hover,
+  &:active {
+    color: #2fb1ab;
+  }
+`;
+
+const StyledDivAddress = styled.div`
+  font-size: 1.4rem;
+  color: #606060;
+  padding-bottom: 2rem;
+`;
+
+const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+  font-size: 1.4rem;
+
+  color: #606060;
   transition: all 0.3s;
 
   &:hover,
   &:active {
     color: #2fb1ab;
   }
+`;
+
+const StyledCopyright = styled.p`
+  padding-top: 4rem;
+  text-align: center;
+  font-size: 1.4rem;
+
+  color: #606060;
+  margin-top: auto;
+`;
+
+const StyledPremiumP = styled.span`
+  font-weight: bold;
+  color: #444444;
 `;
 
 function Footer() {
@@ -175,125 +186,78 @@ function Footer() {
 
   return (
     <StyledFooter>
-      <div className="container">
-        <StyledGrid>
-          <StyledLogoCol>
-            <StyledFooterLogo>
-              <img
-                className="logo"
-                alt="Premium Pool logo"
-                src="/img/PremiumPoolLogo.png"
-              />
-            </StyledFooterLogo>
+      <StyledGrid>
+        <StyledDiv>
+          <StyledFooterLogo>
+            <StyledFooterLogoImg
+              className="logo"
+              alt="Premium Pool logo"
+              src={PremiumPoolLogo}
+            ></StyledFooterLogoImg>
+          </StyledFooterLogo>
+          <StyledDivIcon>
+            <StyledFooterIcon
+              href="https://wa.me/+41795559449"
+              target="_blank"
+              rel="noopener noreferrer"
+              alt="Premium Pool whatsaap"
+            >
+              <StyledSpanIcon>
+                <FaWhatsapp />
+              </StyledSpanIcon>
+            </StyledFooterIcon>
 
-            <StyledSocialLink>
-              <li>
-                <StyledFooterA
-                  href="https://www.instagram.com/premiumpool.ch/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  alt="Premium Pool instagram"
-                >
-                  <StyledSocialIcon>
-                    <FaInstagram />
-                  </StyledSocialIcon>
-                </StyledFooterA>
-              </li>
-              <li>
-                <StyledFooterA
-                  href="https://www.instagram.com/premiumpool.ch/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  alt="Premium Pool facebook"
-                >
-                  <StyledSocialIcon>
-                    <FaFacebook />
-                  </StyledSocialIcon>
-                </StyledFooterA>
-              </li>
-              <li>
-                <StyledFooterA
-                  href="https://wa.me/+41795559449"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  alt="Premium Pool whatsaap"
-                >
-                  <StyledSocialIcon>
-                    <FaWhatsapp />
-                  </StyledSocialIcon>
-                </StyledFooterA>
-              </li>
-            </StyledSocialLink>
+            <StyledFooterIcon
+              href="https://www.facebook.com/profile.php?id=61554910856718"
+              target="_blank"
+              rel="noopener noreferrer"
+              alt="Premium Pool facebook"
+            >
+              <StyledSpanIcon>
+                <FaFacebook />
+              </StyledSpanIcon>{" "}
+            </StyledFooterIcon>
+            <StyledFooterIcon
+              href="https://www.instagram.com/premiumpool.ch/"
+              target="_blank"
+              rel="noopener noreferrer"
+              alt="Premium Pool instagram"
+            >
+              <StyledSpanIcon>
+                <FaInstagram />
+              </StyledSpanIcon>
+            </StyledFooterIcon>
+          </StyledDivIcon>
+        </StyledDiv>
 
-            <StyledCopyright>
-              Copyright &copy; {currentYear}. All rights reserved by
-              <StyledPremiumP>Premium Pool</StyledPremiumP>
-            </StyledCopyright>
-          </StyledLogoCol>
+        <StyledDiv>
+          <StyledDivAddress>
+            <ul>
+              Gilamstrasse 9A <br />
+              4665 Oftringen
+            </ul>
+          </StyledDivAddress>
+          <StyledNavLink to="tel:+41795559449">+41 79 555 94 49</StyledNavLink>
 
-          <StyledAddressCol>
-            <StyledFooterHeading>Contact us</StyledFooterHeading>
-            <StyledContacts>
-              <StyledAddress>
-                Gilamstraße, Oftringen, <br />
-                4665, Schweiz
-              </StyledAddress>
-              <div>
-                <StyledFooterLink to="tel:+41795559449">
-                  +41 79 555 94 49
-                </StyledFooterLink>
-                <br />
-                <StyledFooterLink to="mailto:---.com">
-                  premium@pool.ch
-                </StyledFooterLink>
-              </div>
-            </StyledContacts>
-          </StyledAddressCol>
+          <StyledNavLink to="mailto:info@premiumpool.ch">
+            info@premiumpool.ch
+          </StyledNavLink>
+        </StyledDiv>
 
-          <StyledNavCol>
-            <StyledFooterHeading>Company</StyledFooterHeading>
-            <StyledFooterNav>
-              <li>
-                <StyledFooterLink to="/about">About Us</StyledFooterLink>
-              </li>
-              <li>
-                <StyledFooterLink to="/for-business">
-                  For Business
-                </StyledFooterLink>
-              </li>
-              <li>
-                <StyledFooterLink to="/building-partners">
-                  Building partners
-                </StyledFooterLink>
-              </li>
-              <li>
-                <StyledFooterLink to="/careers">Careers</StyledFooterLink>
-              </li>
-            </StyledFooterNav>
-          </StyledNavCol>
+        <StyledDiv>
+          <StyledNavLink to="/about">Über uns</StyledNavLink>
 
-          <StyledNavCol>
-            <StyledFooterHeading>Resources</StyledFooterHeading>
-            <StyledFooterNav>
-              <li>
-                <StyledFooterLink to="/recipedirectory">
-                  Recipedirectory
-                </StyledFooterLink>
-              </li>
-              <li>
-                <StyledFooterLink to="/help-center">
-                  Help Center
-                </StyledFooterLink>
-              </li>
-              <li>
-                <StyledFooterLink to="/privacy">
-                  Privacy & terms
-                </StyledFooterLink>
-              </li>
-            </StyledFooterNav>
-          </StyledNavCol>
-        </StyledGrid>
-      </div>
+          <StyledNavLink to="/help-center">Impressum</StyledNavLink>
+
+          <StyledNavLink to="/privacy">Datenschutz</StyledNavLink>
+
+          <StyledNavLink to="/careers">Careers</StyledNavLink>
+        </StyledDiv>
+      </StyledGrid>
+      <StyledCopyright>
+        Copyright &copy; {currentYear}. All rights reserved by
+        <StyledPremiumP> Premium Pool</StyledPremiumP>
+      </StyledCopyright>
     </StyledFooter>
   );
 }

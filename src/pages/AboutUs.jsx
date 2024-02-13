@@ -74,10 +74,11 @@ const StyledBox = styled.div`
   }
 
   @media (max-width: 944px) {
+    font-size: 1.5rem;
   }
 
   @media (max-width: 700px) {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   @media (max-width: 624px) {
@@ -120,13 +121,12 @@ function AboutUs() {
           und Pflege von Schwimmbädern unsere Leidenschaft ist! Mit einem
           professionellen Team und langjähriger Erfahrung im Bereich Bau,
           Wartung und Service von Schwimmbädern sind wir hier, um Ihnen eine
-          außergewöhnliche Erfahrung zu bieten. Jedes Poolprojekt ist für uns
+          aussergewöhnliche Erfahrung zu bieten. Jedes Poolprojekt ist für uns
           eine einzigartige Herausforderung, und wir arbeiten mit Hingabe daran,
           sicherzustellen, dass Ihre Pools eine wahre Oase der Frische und
           Schönheit sind. Entdecken Sie unsere Angebote und werden Sie Teil der
           Gemeinschaft von Premium Pool, wo Qualität in jedem Detail zum
-          Ausdruck kommt. Vielen Dank, dass Sie sich für Premium Pool
-          entschieden haben, wo Pools zu Kunstwerken werden!
+          Ausdruck kommt.
         </StyledBox>
 
         <StyledDoxImg loading="lazy" />

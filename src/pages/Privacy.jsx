@@ -95,7 +95,7 @@ function Privacy() {
 
         <StyledParagrahFirst>+41 79 900 80 03</StyledParagrahFirst>
         <StyledParagrahFirst>www.premiumpool.ch</StyledParagrahFirst>
-        <StyledParagrahFirst>premium@pool.ch</StyledParagrahFirst>
+        <StyledParagrahFirst>info@premiumpool.ch</StyledParagrahFirst>
 
         <StyledHeader>Allgemeiner Hinweis</StyledHeader>
         <StyledParagrah>

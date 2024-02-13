@@ -77,7 +77,7 @@ const StyledCard = styled.div`
   }
 
   @media (max-width: 1228px) {
-    max-width: 274px;
+    max-width: 300px;
   }
 `;
 
@@ -105,7 +105,9 @@ const StyledTitel = styled.h6`
 
 const StyledButton = styled.button`
   color: inherit;
-  margin-top: 1.8rem;
+  /* margin-top: 1.8rem; */
+  margin-top: 3.2rem;
+
   text-transform: uppercase;
   padding: 1.2rem 2.2rem;
   font-family: inherit;
@@ -122,6 +124,10 @@ const StyledButton = styled.button`
   :active {
     background-color: #1e8dae;
     transition: all 1s;
+  }
+
+  @media (max-width: 350px) {
+    margin-top: 6rem;
   }
 `;
 
@@ -153,24 +159,24 @@ function Service() {
                 navigate("/kontakt");
               }}
             >
-              Büchen termin
+              Termin Buchen
             </StyledButton>
           </StyledCard>
 
           <StyledCard>
             <StyledImage
               src={imageNeubau}
-              alt="Neubau von Schwimmbädern"
+              alt="Neubau und Umbau"
               loading="lazy"
             />
-            <StyledTitel>Neubau von Schwimmbädern</StyledTitel>
+            <StyledTitel>Neubau und Umbau</StyledTitel>
             <StyledText>
-              Wir spezialisieren uns auf das Design und den Bau neuer
-              Schwimmbäder.
-              <br />
-              Wir bieten notwendige Beratung zu Design, Materialien und moderner
-              Pooltechnologie an, um eine herausragende Erfahrung für Unsere
-              Kunden zu gewährleisten.
+              Ob Sie von Grund auf einen neuen Pool planen oder Ihren
+              bestehenden Pool in eine Oase der Entspannung und Erholung
+              verwandeln möchten, wir stehen Ihnen mit Fachkenntnis und
+              Kreativität zur Seite. Von der Gestaltung bis zur Fertigstellung
+              sorgen wir dafür, dass Ihr Pool Ihren individuellen Bedürfnissen
+              und Wünschen entspricht.
             </StyledText>
             <StyledButton
               onClick={(e) => {
@@ -178,7 +184,7 @@ function Service() {
                 navigate("/kontakt");
               }}
             >
-              Büchen termin
+              Termin Buchen
             </StyledButton>
           </StyledCard>
 
@@ -188,13 +194,14 @@ function Service() {
               alt="Poolrekonstruktion"
               loading="lazy"
             />
-            <StyledTitel>Poolrekonstruktion</StyledTitel>
+            <StyledTitel>Abdeckung</StyledTitel>
             <StyledText>
-              Wir retten alte Schwimmbäder durch Angebote für
-              Rekonstruktionsdienstleistungen. Wir bereiten Sie auf verschiedene
-              Projekte vor, einschliesslich Modernisierung von technologischen
-              Systemen und Designänderungen, die den ästhetischen und
-              funktionalen Wert der Schwimmbäder verbessern.
+              Die perfekte Kombination aus Schutz und Stil für Ihren Pool. Die
+              Abdeckungen bieten nicht nur eine effektive Barriere gegen Schmutz
+              und Blätter, sondern sind auch ästhetisch ansprechend. Geniessen
+              Sie sauberes Wasser und minimieren Sie den Wartungsaufwand,
+              während Sie gleichzeitig die Sicherheit erhöhen. Finden Sie mit
+              uns die ideale Lösung für Ihren Pool.
             </StyledText>
             <StyledButton
               onClick={(e) => {
@@ -202,7 +209,7 @@ function Service() {
                 navigate("/kontakt");
               }}
             >
-              Büchen termin
+              Termin Buchen
             </StyledButton>
           </StyledCard>
         </StyledCardContainer>

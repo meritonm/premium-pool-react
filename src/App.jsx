@@ -8,6 +8,7 @@ import Shop from "./pages/Shop";
 import Privacy from "./pages/Privacy";
 import StillWorking from "./components/StillWorking";
 import ScrollToTop from "./components/Scroll";
+import AboutUsFooter from "./pages/AboutUsFooter";
 
 const AnimatedRouter = () => {
   return (
@@ -21,7 +22,7 @@ const AnimatedRouter = () => {
         <Route path="*" element={<PageNotFound />} />
         <Route path="privacy" element={<Privacy />} />
 
-        <Route path="about" element={<StillWorking />} />
+        <Route path="about" element={<AboutUsFooter />} />
         <Route path="for-business" element={<StillWorking />} />
         <Route path="building-partners" element={<StillWorking />} />
         <Route path="careers" element={<StillWorking />} />

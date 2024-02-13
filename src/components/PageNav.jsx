@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { useLayoutEffect, useState } from "react";
 import { IoClose, IoMenu } from "react-icons/io5";
 
-import PremiumPoolLogo from "../img/PremiumPoolLogo1.png";
+import PremiumPoolLogo from "../img/PremiumPoolLogo.png";
 
 const navBtnOpenAnimation = keyframes`
   from {
@@ -31,7 +31,8 @@ const StyledNav = styled.nav`
   background-color: #a8def0;
 
   img {
-    width: 18rem;
+    /* padding-top: 8px; */
+    width: 10rem;
     height: auto;
   }
 
@@ -164,7 +165,6 @@ const StyledNav = styled.nav`
     top: 2.5rem;
     right: 2.5rem;
   }
-
   .nav-open-btn {
     display: ${({ isNavOpen }) => (isNavOpen ? "none" : "block")};
   }
@@ -177,8 +177,12 @@ const StyledNav = styled.nav`
 const StyledSpan = styled.nav`
   img {
     position: absolute;
-    top: -50%;
-    left: 3%;
+
+    top: -0.8rem;
+    left: 3rem;
+
+    /* top: -50%; */
+    /* left: 3%; */
   }
 
   @media (max-width: 940px) {

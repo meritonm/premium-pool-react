@@ -109,36 +109,36 @@ const StyledIcon = styled.div`
 const features = [
   {
     icon: <MdOutlineCleaningServices />,
-    title: "Poolservice",
-    text: "Professionelle Reinigungsdienste für klare und saubere Pools, damit Sie sorgenfrei schwimmen können",
+    title: "Wartung und Pflege",
+    text: "Wir bieten einen umfassenden Service zur Wartung und Pflege von Schwimmbädern an.",
   },
   {
     icon: <HiOutlineAdjustments />,
-    title: "Service Atumatikdosieranlage",
-    text: "Automatische Dosierung für eine präzise chemische Balance im Pool, damit Sie das Wasser immer genießen können.",
+    title: "Service",
+    text: "Automatische Dosierung für eine präzise chemische Balance im Pool, damit Sie das Wasser immer geniessen können.",
   },
   {
     icon: <HiOutlineCog />,
-    title: "Nuebau",
-    text: "Spezialisierte Pflege für neu errichtete Poolabdeckungen, um ihre Langlebigkeit und optimale Funktionalität sicherzustellen.",
+    title: "Abdeckungen",
+    text: "Schützen Sie Ihren Pool stilvoll und effektiv mit hochwertiger Poolabdeckung.",
   },
   {
     icon: <HiOutlineLightBulb />,
-    title: "IBN",
-    text: "Integrierte Technologie zur Überwachung und Steuerung Ihres Pools für höchsten Komfort und Effizienz",
+    title: "Inbetriebnahme",
+    text: "Integrierte Technologie zur Überwachung und Steuerung Ihres Pools für höchsten Komfort",
   },
 
   {
     icon: <TfiLayoutMediaOverlay />,
-    title: "Umbau",
-    text: "Verwandeln Sie Ihren Pool mit unserem Umbauservice und geben Sie ihm ein modernes und ansprechendes Design..",
+    title: "Neubau und Umbau",
+    text: "Verwandeln Sie Ihren Aussenbereich in einen Ort der Erholung und Unterhaltung mit unserem professionellen Neubau- und Umbauservice für Pools.",
   },
 ];
 
 function FeaturedSection() {
   return (
     <StyledSectionFeatured>
-      <StyledHeadingFeatured>Poolfunktionen</StyledHeadingFeatured>
+      <StyledHeadingFeatured>unsere Dienstleistungen</StyledHeadingFeatured>
       <StyledGrid>
         {features.map((feature, index) => (
           <StyledFeature key={index}>
