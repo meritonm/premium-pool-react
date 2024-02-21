@@ -10,8 +10,6 @@ const StyledFooter = styled.footer`
   padding-right: 12.2rem;
   border-top: 1px solid #add6d4;
 
-  /* background-color: #a8def0; */
-
   @media (max-width: 1200px) {
     padding-left: 9.2rem;
     padding-right: 9.2rem;
@@ -70,8 +68,6 @@ const StyledDiv = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  /* grid-column: 1 / 2;
-  grid-row: span 2; */
 
   row-gap: 2rem;
 `;
@@ -79,9 +75,7 @@ const StyledDiv = styled.div`
 const StyledFooterLogo = styled.a`
   display: block;
   align-self: flex-start;
-  /* margin-right: auto; */
-  /* margin-top: -2.2rem; */
-  /* margin-left: -4.8rem; */
+
   margin-bottom: -2.2rem;
 `;
 
@@ -121,11 +115,6 @@ const StyledSpanIcon = styled.span`
   transition: all 0.3s;
 
   color: #242424;
-
-  @media (max-width: 900px) {
-    /* height: 3rem;
-    width: 3rem; */
-  }
 
   & svg {
     height: 3.2rem;
@@ -188,7 +177,7 @@ function Footer() {
     <StyledFooter>
       <StyledGrid>
         <StyledDiv>
-          <StyledFooterLogo>
+          <StyledFooterLogo href="/">
             <StyledFooterLogoImg
               className="logo"
               alt="Premium Pool logo"
@@ -200,7 +189,7 @@ function Footer() {
               href="https://wa.me/+41795559449"
               target="_blank"
               rel="noopener noreferrer"
-              alt="Premium Pool whatsaap"
+              alt="Premium Pool Whatsaap"
             >
               <StyledSpanIcon>
                 <FaWhatsapp />
@@ -211,7 +200,7 @@ function Footer() {
               href="https://www.facebook.com/profile.php?id=61554910856718"
               target="_blank"
               rel="noopener noreferrer"
-              alt="Premium Pool facebook"
+              alt="Premium Pool Facebook"
             >
               <StyledSpanIcon>
                 <FaFacebook />
@@ -221,7 +210,7 @@ function Footer() {
               href="https://www.instagram.com/premiumpool.ch/"
               target="_blank"
               rel="noopener noreferrer"
-              alt="Premium Pool instagram"
+              alt="Premium Pool Instagram"
             >
               <StyledSpanIcon>
                 <FaInstagram />
@@ -245,18 +234,20 @@ function Footer() {
         </StyledDiv>
 
         <StyledDiv>
-          <StyledNavLink to="/about">Über uns</StyledNavLink>
+          <StyledNavLink to="/uber">Über uns</StyledNavLink>
 
-          <StyledNavLink to="/help-center">Impressum</StyledNavLink>
+          <StyledNavLink to="/impresum">Impressum</StyledNavLink>
 
-          <StyledNavLink to="/privacy">Datenschutz</StyledNavLink>
+          <StyledNavLink to="/datenschutz">Datenschutz</StyledNavLink>
+
+          <StyledNavLink to="/agb">AGB</StyledNavLink>
 
           <StyledNavLink to="/careers">Careers</StyledNavLink>
         </StyledDiv>
       </StyledGrid>
       <StyledCopyright>
         Copyright &copy; {currentYear}. All rights reserved by
-        <StyledPremiumP> Premium Pool</StyledPremiumP>
+        <StyledPremiumP> Musliu Poolbau</StyledPremiumP>
       </StyledCopyright>
     </StyledFooter>
   );

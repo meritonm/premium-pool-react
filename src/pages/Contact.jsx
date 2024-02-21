@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import PageNav from "../components/PageNav";
 import { useState } from "react";
-import { MultiSelect } from "primereact/multiselect";
+
+import emailjs from "emailjs-com";
+
+import Select from "react-select";
 
 import videoForm from "../img/video1.mp4";
 import DatePicker, { registerLocale } from "react-datepicker";
@@ -9,7 +12,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import de from "date-fns/locale/de";
 import styles from "./AppLayout.module.css";
 
-import "./Multiselect.css";
 import Footer from "./Footer";
 
 registerLocale("de", de);
@@ -36,23 +38,12 @@ const StyledSection = styled.section`
   @media (max-width: 624px) {
     padding-bottom: 4.2rem;
   }
-
-  @media (max-width: 528px) {
-    /* padding-left: ;
-    padding-right: ;  */
-  }
-
-  @media (max-width: 400px) {
-    /* padding-bottom: ;
-    padding-left: ;
-    padding-right: ; */
-  }
 `;
 
 const StyledContainerForm = styled.section`
   display: grid;
   max-width: 126rem;
-  max-height: 78rem;
+  max-height: 90rem;
   border-radius: 12px;
   grid-template-columns: 1.5fr 1fr;
   box-shadow: 0 2.4rem 4.8rem rgb(113, 168, 169);
@@ -60,7 +51,7 @@ const StyledContainerForm = styled.section`
   overflow: hidden;
 
   @media (max-width: 1126px) {
-    max-height: 76rem;
+    max-height: 80rem;
   }
 
   @media (max-width: 700px) {
@@ -84,12 +75,18 @@ const StyledFormContent = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 3.2rem;
-    row-gap: 2rem;
+    row-gap: 1rem;
 
     @media (max-width: 944px) {
       column-gap: 2rem;
-      row-gap: 1rem;
+      row-gap: 0.8rem;
+      grid-template-columns: 1fr 1fr;
     }
+  }
+
+  .cta-form > div:nth-last-child(2),
+  .cta-form > div:nth-last-child(3) {
+    grid-column: span 2;
   }
 
   .cta-form label {
@@ -115,7 +112,7 @@ const StyledFormContent = styled.div`
 
     border: none;
     background-color: #fdf2e9;
-    border-radius: 50px;
+    /* border-radius: 50px; */
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     @media (max-width: 944px) {
       font-size: 1.2rem;
@@ -140,10 +137,6 @@ const StyledFormContent = styled.div`
         font-size: 1.2rem;
       }
     }
-  }
-
-  @media (max-width: 678) {
-    /* padding: 2.2rem 2.2rem 2.2rem 2.2rem; */
   }
 `;
 
@@ -214,65 +207,51 @@ const StyledFormH33 = styled.h3`
   }
 `;
 
-const StyledMultiSelect = styled(MultiSelect)`
-  font-size: 1.4rem;
-  border-radius: 20px;
-  width: 100%;
-  padding: 1rem;
-  border: none;
-  background-color: #fdf2e9;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-
-  .p-multiselect-panel {
-    .p-multiselect-items {
-      .p-multiselect-item {
-        &:hover {
-          background-color: #fdf2e9;
-        }
-      }
-    }
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 8px rgba(253, 242, 233, 0.562);
-    background-color: #fdf2e9;
-  }
-  & input {
-    font-size: 1.4rem;
-    border-radius: 20px;
-    @media (max-width: 944px) {
-      font-size: 1.2rem;
-    }
-  }
-
-  @media (max-width: 944px) {
-    font-size: 1.2rem;
-  }
-`;
-
-// const StyledSelect = styled.select`
-//   font-size: 1.8rem;
-//   font-family: inherit;
-//   color: inherit;
-//   border: none;
-//   background-color: #fdf2e9;
-//   border-radius: 50px;
-//   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-//   /* appearance: none; */
-
-//   & option {
-//     font-size: 1.6rem;
-//   }
-
-//   @media (max-width: 1126px) {
-//     font-size: 1rem;
-
-//     & option {
-//       font-size: 1.2rem;
-//     }
-//   }
-// `;
+const customStyles = {
+  control: (provided) => ({
+    ...provided,
+    fontSize: "1.2rem",
+    borderRadius: "20px",
+    width: "100%",
+    border: "none",
+    backgroundColor: "#fdf2e9",
+    boxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
+    "&:focus": {
+      outline: "none",
+      boxShadow: "0 0 0 8px rgba(253, 242, 233, 0.562)",
+      backgroundColor: "#fdf2e9",
+    },
+  }),
+  option: (provided) => ({
+    ...provided,
+    fontSize: "1.2rem",
+  }),
+  menu: (provided) => ({
+    ...provided,
+    fontSize: "1.2rem",
+  }),
+  multiValue: (provided) => ({
+    ...provided,
+    fontSize: "1.2rem",
+    backgroundColor: "#23a9d1",
+    color: "#ececec",
+    borderRadius: "50px",
+  }),
+  multiValueLabel: (provided) => ({
+    ...provided,
+    fontSize: "1.2rem",
+    color: "#ececec",
+  }),
+  multiValueRemove: (provided) => ({
+    ...provided,
+    fontSize: "1.2rem",
+    color: "#ececec",
+    "&:hover": {
+      backgroundColor: "#1e8dae",
+      color: "#ececec",
+    },
+  }),
+};
 
 const StyledVideo = styled.video`
   display: flex;
@@ -323,7 +302,7 @@ const StyledButton = styled.button`
 function Contact() {
   const [setIsVideoPlaying] = useState(false);
 
-  const [name, setName] = useState("");
+  const [vorname, setVorname] = useState("");
   const [surname, setSurname] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [city, setCity] = useState("");
@@ -336,12 +315,16 @@ function Contact() {
   const [selectedServices, setSelectedServices] = useState([]);
   const [selectedServicesError, setSelectedServicesError] = useState("");
 
-  const [comments, setComments] = useState("");
+  const [message, setComments] = useState("");
 
   const [telNumberError, setTelNumberError] = useState("");
   const [dateError, setDateError] = useState("");
 
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+
+  const disableSundays = (date) => {
+    return date.getDay() !== 0;
+  };
 
   ////////////////////////////////////////////
   // PER MA VON
@@ -365,30 +348,17 @@ function Contact() {
   // };
   ////////////////////////////////////////////
 
-  const data = [
-    name,
-    surname,
-    zipCode,
-    city,
-    email,
-    TelNumber,
-    street,
-    date,
-    selectedServices,
-    comments,
-  ];
-
   const serviceOptions = [
-    { name: "Wartung und Pflege", value: "Wartung und Pflege" },
-    { name: "Service", value: "Service" },
-    { name: "Abdeckungen", value: "Abdeckungen" },
-    { name: "Inbetriebnahme", value: "Inbetriebnahme" },
-    { name: "Neubau und Umbau", value: "Neubau und Umbau" },
-    { name: "Mehr...", value: "Mehr..." },
+    { label: "Wartung und Pflege", value: "Wartung und Pflege" },
+    { label: "Service", value: "Service" },
+    { label: "Abdeckungen", value: "Abdeckungen" },
+    { label: "Inbetriebnahme", value: "Inbetriebnahme" },
+    { label: "Neubau und Umbau", value: "Neubau und Umbau" },
+    { label: "Mehr...", value: "Mehr..." },
   ];
 
   const handleMultiSelectChange = (e) => {
-    setSelectedServices(e.value);
+    setSelectedServices(e);
     setSelectedServicesError("");
   };
 
@@ -433,7 +403,7 @@ function Contact() {
       return;
     }
     if (
-      !name ||
+      !vorname ||
       !surname ||
       !zipCode ||
       !city ||
@@ -447,20 +417,42 @@ function Contact() {
       return;
     }
 
-    console.log("Form submitted:", data);
+    const formattedDate = date
+      ? `${("0" + date.getDate()).slice(-2)}.${(
+          "0" +
+          (date.getMonth() + 1)
+        ).slice(-2)}.${date.getFullYear()}`
+      : "";
 
-    setName("");
-    setSurname("");
-    setZipCode("");
-    setCity("");
-    setEmail("");
-    setTelNumber("");
-    setStreet("");
-    setDate("");
-    setSelectedServices("");
-    setComments("");
+    const templateParams = {
+      vorname: vorname,
+      surname: surname,
+      zipCode: zipCode,
+      city: city,
+      email: email,
+      TelNumber: TelNumber,
+      street: street,
+      date: formattedDate,
+      selectedServices: selectedServices
+        .map((service) => service.label)
+        .join(", "),
+      message: message,
+    };
 
-    setIsFormSubmitted(true);
+    emailjs
+      .send(
+        "service_jhljgez",
+        "template_9jsvzzj",
+        templateParams,
+        "ip0jGAK5NbKhVxrgU"
+      )
+      .then((response) => {
+        console.log("Email sent successfully:", response);
+        setIsFormSubmitted(true);
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
+      });
   };
 
   return (
@@ -491,10 +483,10 @@ function Contact() {
                     <label htmlFor="Vorname">Vorname</label>
                     <input
                       type="text"
-                      id="name"
+                      id="vorname"
                       placeholder="Vorname"
-                      onChange={(e) => setName(e.target.value)}
-                      value={name}
+                      onChange={(e) => setVorname(e.target.value)}
+                      value={vorname}
                       required
                     />
                   </div>
@@ -535,13 +527,13 @@ function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="email">E-Mail</label>
+                    <label htmlFor="street">Strasse und Hausnummer</label>
                     <input
-                      type="email"
-                      id="email"
-                      onChange={(e) => setEmail(e.target.value)}
-                      value={email}
-                      placeholder="E-Mail"
+                      type="text"
+                      id="street"
+                      onChange={(e) => setStreet(e.target.value)}
+                      value={street}
+                      placeholder="Strasse und Hausnummer"
                       required
                     />
                   </div>
@@ -562,13 +554,13 @@ function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="street">Strasse und Hausnummer</label>
+                    <label htmlFor="email">E-Mail</label>
                     <input
-                      type="text"
-                      id="street"
-                      onChange={(e) => setStreet(e.target.value)}
-                      value={street}
-                      placeholder="Strasse und Hausnummer"
+                      type="email"
+                      id="email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
+                      placeholder="E-Mail"
                       required
                     />
                   </div>
@@ -583,6 +575,8 @@ function Contact() {
                       wrapperClassName={styles.datePickerWrapper}
                       dateFormat="dd.MM.yyyy"
                       placeholderText="Tag auswählen"
+                      minDate={new Date()}
+                      filterDate={disableSundays}
                       required
                     />
                     {dateError && (
@@ -590,88 +584,18 @@ function Contact() {
                     )}
                   </div>
 
-                  {/* <div>
-                    <label htmlFor="date">Wunschtermin</label>
-                    <DatePicker
-                      id="date"
-                      locale="de"
-                      selected={date}
-                      onChange={(date) => setDate(date)}
-                      wrapperClassName={styles.datePickerWrapper}
-                      dateFormat="dd.MM.yyyy"
-                      placeholder="TT.MM.JJJJ"
-                      required
-                    />
-                  </div> */}
-                  {/* <div>
-                    <label htmlFor="serviceOption">Service Optionen</label>
-                    <StyledSelect
-                      id="serviceOption"
-                      onChange={(e) => setSelectedService(e.target.value)}
-                      value={selectedService}
-                      required
-                    >
-                      <option value="">Wähle eine Option</option>
-                      <option value="text">Wartung und Pflege</option>
-                      <option value="text">Service</option>
-                      <option value="text">Abdeckungen</option>
-                      <option value="text">Inbetriebnahme</option>
-                      <option value="text">Neubau und Umbau</option>
-                      <option value="text">Mehr...</option>
-                    </StyledSelect>
-                  </div> */}
-                  {/* <div>
-                    <label htmlFor="selectedServices">Service Optionen</label>
-                    <StyledMultiSelect
-                      id="selectedServices"
-                      value={selectedServices}
-                      onChange={(e) => setSelectedServices(e.value)}
-                      options={serviceOptions}
-                      optionLabel="name"
-                      placeholder="Wähle eine oder mehrere Optionen"
-                      required
-                    />
-                  </div> */}
-                  {/* <div className="card flex justify-content-center">
-                    <MultiSelect
-                      value={selectedServices}
-                      onChange={handleMultiSelectChange}
-                      options={serviceOptions}
-                      optionLabel="name"
-                      display="chip"
-                      placeholder="Wähle eine oder mehrere"
-                      maxSelectedLabels={1}
-                      className="w-full md:w-20rem"
-                    />
-                  </div> */}
-                  {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
-                  {/* QEKJO PJESA */}
                   <div>
-                    <label htmlFor="select">Optionen</label>
-                    <StyledMultiSelect
-                      id="select"
+                    <label htmlFor="selectedServices">Service Optionen</label>
+                    <Select
+                      options={serviceOptions}
+                      styles={customStyles}
+                      display="chip"
                       value={selectedServices}
                       onChange={handleMultiSelectChange}
-                      options={serviceOptions}
-                      optionLabel="name"
+                      isMulti={true}
                       placeholder="Wähle eine oder mehrere"
                       maxSelectedLabels={1}
-                      itemTemplate={(option) => (
-                        <div
-                          style={{
-                            width: "100%",
-                            whiteSpace: "nowrap",
-                            backgroundColor: "#333",
-                            // overflow: "hidden",
-                            textOverflow: "ellipsis",
-                          }}
-                        >
-                          {option.name}
-                        </div>
-                      )}
                     />
-                    {/* /////////////////////////////////////////////////////////////////////////////////// */}
-                    {/* Display error message if no option is selected */}
                     {selectedServicesError && (
                       <span style={{ color: "red" }}>
                         {selectedServicesError}
@@ -680,13 +604,18 @@ function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="comments">Kommentare</label>
+                    <label htmlFor="message">Kommentare</label>
                     <input
                       type="text"
-                      id="comments"
+                      id="message"
                       onChange={(e) => setComments(e.target.value)}
-                      value={comments}
+                      value={message}
                       placeholder="Optional: Erzählen Sie mehr..."
+                      rows={4}
+                      style={{
+                        height: "100px",
+                        paddingBottom: "8rem",
+                      }}
                     />
                   </div>
 

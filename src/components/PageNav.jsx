@@ -30,12 +30,6 @@ const navBtnCloseAnimation = keyframes`
 const StyledNav = styled.nav`
   background-color: #a8def0;
 
-  img {
-    /* padding-top: 8px; */
-    width: 10rem;
-    height: auto;
-  }
-
   font-size: 1.8rem;
   color: #000000;
   font-weight: 500;
@@ -177,12 +171,10 @@ const StyledNav = styled.nav`
 const StyledSpan = styled.nav`
   img {
     position: absolute;
+    width: 10rem;
+    height: auto;
 
     top: -0.8rem;
-    left: 3rem;
-
-    /* top: -50%; */
-    /* left: 3%; */
   }
 
   @media (max-width: 940px) {
