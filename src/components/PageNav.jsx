@@ -81,6 +81,10 @@ const StyledNav = styled.nav`
     font-size: 3rem;
     gap: 6rem;
 
+    @media (max-width: 1092px) {
+      gap: 3rem;
+    }
+
     @media (max-width: 940px) {
       display: ${({ isNavOpen }) => (isNavOpen ? "flex" : "none")};
       position: absolute;
@@ -210,6 +214,9 @@ function PageNav() {
         </li>
         <li>
           <NavLink to="/shop">Shop</NavLink>
+        </li>
+        <li>
+          <NavLink to="/abdeckungen">Abdeckungen</NavLink>
         </li>
         <li>
           <NavLink to="/kontakt">Kontakt</NavLink>

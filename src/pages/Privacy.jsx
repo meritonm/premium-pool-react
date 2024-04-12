@@ -4,7 +4,6 @@ import Footer from "./Footer";
 import { NavLink } from "react-router-dom";
 
 const StyledSection = styled.section`
-  max-width: 140rem;
   padding: 9.6rem 7rem;
 
   @media (max-width: 1200px) {

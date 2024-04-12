@@ -63,7 +63,7 @@ const StyledCardContainer = styled.div`
 `;
 
 const StyledCard = styled.div`
-  max-width: 320px;
+  max-width: 324px;
   background-color: #b9e6f3;
   display: flex;
   border-radius: 18px;
@@ -75,10 +75,6 @@ const StyledCard = styled.div`
   &:hover {
     transform: translateY(-1.2rem);
     transition: all 0.5s;
-  }
-
-  @media (max-width: 1228px) {
-    max-width: 300px;
   }
 `;
 
@@ -106,7 +102,6 @@ const StyledTitel = styled.h6`
 
 const StyledButton = styled.button`
   color: inherit;
-  /* margin-top: 1.8rem; */
   margin-top: 3.2rem;
 
   text-transform: uppercase;
@@ -118,12 +113,13 @@ const StyledButton = styled.button`
   margin-bottom: 2rem;
   cursor: pointer;
   color: #ececec;
-  background-color: #23a9d1;
+  background-color: #1e93b7;
   border-radius: 50px;
+  margin-right: 2rem;
 
   &:hover,
   :active {
-    background-color: #1e8dae;
+    background-color: #197490;
     transition: all 1s;
   }
 
@@ -131,6 +127,35 @@ const StyledButton = styled.button`
     margin-top: 6rem;
   }
 `;
+
+const StyledButtonMore = styled.button`
+  color: inherit;
+  margin-top: 3.2rem;
+
+  text-transform: uppercase;
+  padding: 1.2rem 2.2rem;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border: none;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  color: #ececec;
+  background-color: #39a1c0;
+  border-radius: 50px;
+
+  &:hover,
+  :active {
+    background-color: #197490;
+    transition: all 1s;
+  }
+
+  @media (max-width: 350px) {
+    margin-top: 6rem;
+  }
+`;
+
+const SapceButtonSpan = styled.span``;
 
 function Service() {
   const navigate = useNavigate();
@@ -204,14 +229,24 @@ function Service() {
               während Sie gleichzeitig die Sicherheit erhöhen. Finden Sie mit
               uns die ideale Lösung für Ihren Pool.
             </StyledText>
-            <StyledButton
-              onClick={(e) => {
-                e.preventDefault();
-                navigate("/kontakt");
-              }}
-            >
-              Termin Buchen
-            </StyledButton>
+            <SapceButtonSpan>
+              <StyledButton
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/kontakt");
+                }}
+              >
+                Termin Buchen
+              </StyledButton>
+              <StyledButtonMore
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/abdeckungen");
+                }}
+              >
+                LERNE MEHR
+              </StyledButtonMore>
+            </SapceButtonSpan>
           </StyledCard>
         </StyledCardContainer>
       </StyledSection>

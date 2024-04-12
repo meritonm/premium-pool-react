@@ -213,12 +213,12 @@ const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   color: #ececec;
-  background-color: #23a9d1;
+  background-color: #1b82a1;
   border-radius: 50px;
 
   &:hover,
   :active {
-    background-color: #1e8dae;
+    background-color: #197490;
     transition: all 1s;
     transform: scale(1.1);
   }
@@ -242,18 +242,10 @@ const StyledButton = styled.button`
     padding: 1rem 2rem;
   }
   @media (max-width: 485px) {
-    /* font-size: 1.2rem; */
-    /* padding: 0.8rem 1.8rem; */
-    /* width: 16rem; */
-    /* text-align: center; */
     justify-content: center;
   }
-  @media (max-width: 425px) {
-    /* font-size: 1.1rem; */
-  }
+
   @media (max-width: 390px) {
-    /* font-size: 1rem; */
-    /* padding: 0.6rem 1.6rem; */
     font-size: 1.2rem;
     padding: 0.8rem 1.6rem;
   }
@@ -264,11 +256,11 @@ const StyledButton = styled.button`
   }
 
   &:last-child {
-    background-color: #2eb3dc;
+    background-color: #39a1c0;
     color: #ececec;
 
     &:hover {
-      background-color: #219bc0;
+      background-color: #197490;
       transform: scale(1.1);
     }
   }
@@ -317,7 +309,7 @@ function SectionBackground() {
         />
         <StyledText>
           <StyledH1>IHR POOL, UNSERE LEIDENSCHAFT</StyledH1>
-          <StyledH3>Wir beherrschen die kunst des Pools</StyledH3>
+          <StyledH3>Wir beherrschen die Kunst des Pools</StyledH3>
           <StyledParagraph>
             Tauchen Sie ein in eine Welt, in der Innovation auf Entspannung
             trifft und Ihr Traumpool Wirklichkeit wird

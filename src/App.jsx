@@ -6,7 +6,9 @@ import SpinnerFullPage from "./components/SpinnerFullPage";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const Service = lazy(() => import("./pages/Service"));
 const Shop = lazy(() => import("./pages/Shop"));
+const Abdeckungen = lazy(() => import("./pages/Abdeckungen"));
 const Contact = lazy(() => import("./pages/Contact"));
+
 const PageNotFound = lazy(() => import("./components/PageNotFound"));
 const StillWorking = lazy(() => import("./components/StillWorking"));
 
@@ -24,6 +26,7 @@ const AnimatedRouter = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="service" element={<Service />} />
           <Route path="shop" element={<Shop />} />
+          <Route path="abdeckungen" element={<Abdeckungen />} />
           <Route path="kontakt" element={<Contact />} />
           <Route path="*" element={<PageNotFound />} />
 

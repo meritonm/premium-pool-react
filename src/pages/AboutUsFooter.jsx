@@ -3,7 +3,6 @@ import PageNav from "../components/PageNav";
 import Footer from "./Footer";
 
 const StyledPrivacySection = styled.section`
-  max-width: 140rem;
   padding: 9.6rem 7rem;
 
   @media (max-width: 1200px) {
